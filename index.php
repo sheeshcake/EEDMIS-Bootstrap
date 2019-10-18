@@ -11,8 +11,7 @@
 </style>
 <body class="w3-light-grey">
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-  <?php include"includes/top_nav.php"; ?>
-  <?php include"includes/side_nav.php"; ?>
+  <?php include"includes/ibjt/register_driver.php"; ?>
 
 </div>
 
