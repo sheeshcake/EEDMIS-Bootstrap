@@ -9,7 +9,7 @@
 		$birthdate = $_POST['birthdate'];
 		$sql = "INSERT INTO ibjt_drivers(first_name,last_name,address,birthdate) VALUES ('$firstname','$lastname','$address','$birthdate')";
 		if($result = mysqli_query($conn, $sql)){
-			echo "done";
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
 		else{
 			echo("Error description: " . mysqli_error($conn));
