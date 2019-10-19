@@ -11,7 +11,7 @@
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><?php echo $_SESSION['name']; ?></a>
       <div class="dropdown-menu" aria-labellledby="navbarDropdown">
         <a class="dropdown-item" href="#">View Profile</a>
-        <a class="dropdown-item" href="controller/logout_controller.php">Logout</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</a>
       </div>
     </li>
   </ul>
@@ -26,3 +26,5 @@
 </nav>
 
 <br>
+
+
