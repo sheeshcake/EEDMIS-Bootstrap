@@ -1,7 +1,22 @@
-<form method="post" action="controller/ibjt/register_controller.php">
-	<input type="text" name="firstname">
-	<input type="text" name="lastname">
-	<input type="text" name="address">
-	<input type="date" name="birthdate">
-	<input type="submit" name="submit" value="Submit">
+<form method="POST" action="controller/ibjt/register_controller.php">
+  <div class="form-group">
+    <label for="Firstname">First Name</label>
+    <input type="text" class="form-control" placeholder="First Name">
+  </div>
+  <div class="form-group">
+    <label for="LastName">Last Name</label>
+    <input type="text" class="form-control" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <label for="Address">Address</label>
+    <input type="text" class="form-control" placeholder="Address">
+  </div>
+  <div class="form-group">
+  	<label for="Birthdate"></label>
+  	<input type="date" class="form-control" name="date">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+<a href="controller/logout_controller.php">Logout</a>
