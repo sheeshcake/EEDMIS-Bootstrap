@@ -17,6 +17,3 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
-<a href="controller/logout_controller.php">Logout</a>

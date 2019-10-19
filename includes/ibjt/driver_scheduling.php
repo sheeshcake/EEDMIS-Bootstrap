@@ -1,11 +1,6 @@
-<?php
-	include "controller/ibjt/search_driver.php";
-?>
 
-<form method="POST">
-	<input type="text" class="form-control" name="search" placeholder="Search">
-</form>
-<table class="table table-striped">
+
+<table class="table table-striped table-bordered" id="drivers">
 	<thead>
 		<tr>
 			<th scope="col">Driver Id</th>
@@ -14,13 +9,7 @@
 		</tr>
 	</thead>
 <?php
-	if(isset($_SESSION['search'])){
-		$search = $_SESSION['search'];
-		$sql = "SELECT * FROM ibjt_drivers WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR driver_id LIKE '%$search%'";
-	}
-	else{
-		$sql = "SELECT * FROM ibjt_drivers";
-	}
+	$sql = "SELECT * FROM ibjt_drivers";
 	$result = mysqli_query($conn, $sql);
 	while($data = mysqli_fetch_assoc($result)){
 ?>
@@ -59,12 +48,15 @@
 
     </div>
   </div>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.css">
-
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).on("click", ".open-homeEvents", function () {
      var eventId = $(this).data('id');
      $('#idHolder').html( eventId );
      $('#eventId').val(eventId);
 });	
+$(document).ready(function() {
+    $('#drivers').DataTable(1);
+} );
 </script>

@@ -1,13 +1,12 @@
 <?php
   include "controller/connect.php";
   session_start();
-  if(isset($_SESSION['status'])){}
+  if(isset($_SESSION['role'])){}
   else{
     header("Location: login.php");
   }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -20,9 +19,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <body class="w3-light-grey">
+
+<?php include "includes/layout/top_nav.php"; ?>
 <div>
-  <?php include"includes/ibjt/register_driver.php"; ?>
-  <?php include"includes/ibjt/driver_scheduling.php"; ?>
+  <?php
+    if(isset($_GET['loc'])){
+        include"includes/" . $_SESSION['role'] . "/" . $_GET['loc'] . ".php";
+    }
+    else{
+        include"includes/" . $_SESSION['role'] . "/dashboard.php";
+
+    }
+  ?>
 </div>
 
 
