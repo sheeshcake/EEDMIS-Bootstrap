@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2019 at 03:11 PM
+-- Generation Time: Oct 19, 2019 at 04:12 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -67,6 +67,18 @@ INSERT INTO `ibjt_schedule` (`schedule_id`, `driver_id`, `schedule_time`, `sched
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `slaughterhouse_pricing`
+--
+
+CREATE TABLE `slaughterhouse_pricing` (
+  `pricing_id` int(11) NOT NULL,
+  `species_type` varchar(36) NOT NULL,
+  `spiecies_price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -85,7 +97,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `first_name`, `last_name`, `user_role`, `user_image`) VALUES
-(1, 'ibjt', 'ibjt', 'ibjt', 'admin', 'ibjt', NULL);
+(1, 'ibjt', 'ibjt', 'ibjt', 'admin', 'ibjt', NULL),
+(2, 'admin', 'admin', 'James', 'Acain', 'admin', NULL),
+(3, 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', NULL);
 
 --
 -- Indexes for dumped tables
@@ -102,6 +116,12 @@ ALTER TABLE `ibjt_drivers`
 --
 ALTER TABLE `ibjt_schedule`
   ADD PRIMARY KEY (`schedule_id`);
+
+--
+-- Indexes for table `slaughterhouse_pricing`
+--
+ALTER TABLE `slaughterhouse_pricing`
+  ADD PRIMARY KEY (`pricing_id`);
 
 --
 -- Indexes for table `users`
@@ -126,10 +146,16 @@ ALTER TABLE `ibjt_schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `slaughterhouse_pricing`
+--
+ALTER TABLE `slaughterhouse_pricing`
+  MODIFY `pricing_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
