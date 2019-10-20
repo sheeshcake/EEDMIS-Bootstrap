@@ -25,7 +25,6 @@
 
 <div id="modalHomeEvents" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
       <!-- Modal content-->
       <!-- Dri na ka mag butang ug Form para sa submit Button -->
       <div class="modal-content">
