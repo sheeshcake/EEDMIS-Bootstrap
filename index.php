@@ -24,11 +24,18 @@
 <div>
   <?php
     if(isset($_GET['loc'])){
-        include"includes/" . $_SESSION['role'] . "/" . $_GET['loc'] . ".php";
+      if(@fopen("includes/" . $_SESSION['role'] . "/" . $_GET['loc'] . ".php", "r")){
+        include "includes/" . $_SESSION['role'] . "/" . $_GET['loc'] . ".php";
+      }
+      else if($_GET['loc'] == 'test'){
+        include "test.php";
+      }
+      else{
+        include "includes/layout/error-404.php";
+      }
     }
     else{
         include"includes/" . $_SESSION['role'] . "/dashboard.php";
-
     }
   ?>
 </div>
