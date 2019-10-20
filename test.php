@@ -1,73 +1,60 @@
-<style type="text/css">
-	#green,#yellow{
-		text-align: center;
-		width: 100%;
-		height: 200px;
-	}
-	#orange{
-		text-align: center;
-		width: 100%;
-		height: 100px;
-	}
-	#orange-f{
-		text-align: center;
-		width: 95%;
-		height: 50px;
-	}
-	#blue{
-		text-align: center;
-		width: 100%;
-		height: 100px;
-	}
-	#blue-s{
-		text-align: center;
-		width: 100%;
-		height: 150px;
-	}
-	#red{
-		text-align: center;
-		width: 100%;
-		height: 500px;
-	}
-	.cont{
-		border-style: dotted;
-		padding: 2%;
-	}
-</style>
-<center><h1>Tambo Market Map</h1></center>
-<div style="display: block;" class="cont">
-	<div style="display: flex; border-style: dotted;">
-		<div style="display: block; margin: 1%; width: 80%;">
-			<div style="border-style: dotted;"><div class="card" id="blue" style="background-color: blue;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Blue Department</a></div></div><br>
-			<div style="border-style: dotted;"><div class="card" id="green" style="background-color: green;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Green Department</a></div></div><br>
-			<div style="border-style: dotted;"><div class="card" id="yellow" style="background-color: yellow;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Yellow Department</a></div></div><br>
-			<div style="border-style: dotted;"><div class="card" id="orange" style="background-color: orange;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Orange Department</a></div></div><br>
-		</div>
-		<div style="display: block; margin: 1%; text-align: center; width: 20%;">
-			<div style="border-style: dotted;"><div class="card" id="blue-s" style="background-color: blue;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Blue Department</a></div></div><br>
-			<div style="border-style: dotted;"><div class="card" id="red" style="background-color: red;" data-toggle="modal" data-target="#exampleModal"><a href="#" class="btn stretched-link">Red Department</a></div></div><br>
-		</div>
-	</div>
-	<div class="card" id="orange-f" style="background-color: orange; margin: 1%;"><a href="#" class="btn stretched-link">Orange Department</a></div><br>
-</div>
+<!-- PHP Data to Bootstrap Modal -->
 
+<table class="table table-striped table-bordered">
+<thead>
+		<tr>
+			<th scope="col">Test Id</th>
+			<th scope="col">Test Data</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+<?php
+	$sql = "SELECT * FROM test";
+	$result = mysqli_query($conn, $sql);
+	while($data = mysqli_fetch_assoc($result)){
+?>
+		<tr>
+			<td><?php echo $data['test_id']; ?></td>
+			<td id="<?php echo $data['test_id']; ?>"><?php echo $data['data1']; ?></td>
+			<td><button class="open-homeEvents btn btn-primary" data-id="<?php echo $data['test_id'] ?>"  data-toggle="modal" data-target="#modalHomeEvents">Schedule</button></td>
+		</tr>
+<?php
+	}
+?>
+</table>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Stalls</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div id="modalHomeEvents" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <!-- Dri na ka mag butang ug Form para sa submit Button -->
+      <div class="modal-content">
+        <div class="modal-header" style="height:50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+         <label id="title"></label>     
+        <input type="hidden" name="driver_id" id="eventId"/>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Submit" name="submit" style="background-color:rgb(0,30,66); ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
       </div>
-      <div class="modal-body">
-        <h3>I add ra nako ni kung naa koy time hahah</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
-</div>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).on("click", ".open-homeEvents", function () {
+     var eventId = $(this).data('id');
+     $('#idHolder').html( eventId );
+     var customerId = $('#' + eventId).html();  
+     console.log(customerId);
+     $('#title').html('Click Data: ' + customerId);
+});	
+$(document).ready(function() {
+    $('#drivers').DataTable(1);
+} );
+</script>
