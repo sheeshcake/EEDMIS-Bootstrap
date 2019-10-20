@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2019 at 04:12 PM
+-- Generation Time: Oct 20, 2019 at 02:17 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -53,6 +53,7 @@ INSERT INTO `ibjt_drivers` (`driver_id`, `first_name`, `last_name`, `address`, `
 CREATE TABLE `ibjt_schedule` (
   `schedule_id` int(11) NOT NULL,
   `driver_id` int(11) NOT NULL,
+  `driver_route` varchar(16) NOT NULL,
   `schedule_time` time NOT NULL,
   `schedule_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,8 +62,10 @@ CREATE TABLE `ibjt_schedule` (
 -- Dumping data for table `ibjt_schedule`
 --
 
-INSERT INTO `ibjt_schedule` (`schedule_id`, `driver_id`, `schedule_time`, `schedule_date`) VALUES
-(2, 1, '02:12:00', '2019-10-17');
+INSERT INTO `ibjt_schedule` (`schedule_id`, `driver_id`, `driver_route`, `schedule_time`, `schedule_date`) VALUES
+(2, 1, '', '02:12:00', '2019-10-17'),
+(3, 1, '', '00:12:00', '1212-12-12'),
+(6, 2, '', '02:13:00', '2019-10-25');
 
 -- --------------------------------------------------------
 
@@ -75,6 +78,29 @@ CREATE TABLE `slaughterhouse_pricing` (
   `species_type` varchar(36) NOT NULL,
   `spiecies_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `test_id` int(11) NOT NULL,
+  `data1` varchar(36) DEFAULT NULL,
+  `data2` int(36) DEFAULT NULL,
+  `data3` int(36) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`test_id`, `data1`, `data2`, `data3`) VALUES
+(1, 'test one', 1, 2),
+(2, 'test two', 3, 4),
+(3, 'test three', 5, 6),
+(4, 'test four', 7, 8);
 
 -- --------------------------------------------------------
 
@@ -99,7 +125,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `password`, `first_name`, `last_name`, `user_role`, `user_image`) VALUES
 (1, 'ibjt', 'ibjt', 'ibjt', 'admin', 'ibjt', NULL),
 (2, 'admin', 'admin', 'James', 'Acain', 'admin', NULL),
-(3, 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', NULL);
+(3, 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', 'slaughterhouse', NULL),
+(4, 'market', 'market', 'market', 'market', 'market', NULL),
+(5, 'burial', 'burial', 'burial', 'burial', 'cemetery', NULL);
 
 --
 -- Indexes for dumped tables
@@ -124,6 +152,12 @@ ALTER TABLE `slaughterhouse_pricing`
   ADD PRIMARY KEY (`pricing_id`);
 
 --
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`test_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -143,7 +177,7 @@ ALTER TABLE `ibjt_drivers`
 -- AUTO_INCREMENT for table `ibjt_schedule`
 --
 ALTER TABLE `ibjt_schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `slaughterhouse_pricing`
@@ -152,10 +186,16 @@ ALTER TABLE `slaughterhouse_pricing`
   MODIFY `pricing_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `test`
+--
+ALTER TABLE `test`
+  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
