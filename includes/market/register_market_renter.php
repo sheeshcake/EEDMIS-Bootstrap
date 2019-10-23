@@ -1,30 +1,25 @@
 <form method="POST" action="controller/market/register_controller.php">
 
   <div class="form-group">
-    <label for="stall_number">Stall Number</label>
-    <input type="text" class="form-control" placeholder="Stall Number">
-  </div>
-
-  <div class="form-group">
     <label for="Firstname">First Name</label>
-    <input type="text" class="form-control" placeholder="First Name">
+    <input type="text" class="form-control" name="first_name" placeholder="First Name">
   </div>
 
 
   <div class="form-group">
     <label for="middle">Middle Name</label>
-    <input type="text" class="form-control" placeholder="Middle Name">
+    <input type="text" class="form-control" name="middle_name" placeholder="Middle Name">
   </div>
 
 
   <div class="form-group">
     <label for="LastName">Last Name</label>
-    <input type="text" class="form-control" placeholder="Last Name">
+    <input type="text" class="form-control" name="last_name" placeholder="Last Name">
   </div>
 
    <div class="form-group">
     <label for="gender">Gender</label>
-                          <select name="SEX" id="SEX" class="form-control input-sm">
+                          <select name="sex" class="form-control input-sm">
                             <option>Male</option>
                             <option>Female</option> 
                          </select>
@@ -34,7 +29,7 @@
 
   <div class="form-group">
     <label for="LastName">Civil Status</label>
-                         <select name="CIVILSTATUS" id="CIVILSTATUS" class="form-control input-sm">
+                         <select name="civil_status" class="form-control input-sm">
                             <option>Single</option>
                             <option>Married</option>
                             <option>Widow</option>
@@ -45,29 +40,19 @@
 
   <div class="form-group">
     <label for="Address">Address</label>
-    <input type="text" class="form-control" placeholder="Address">
+    <input type="text" class="form-control" name="address" placeholder="address">
   </div>
 
 
   <div class="form-group">
     <label for="Birthdate">Birthdate</label>
-    <input type="date" class="form-control" name="date">
+    <input type="date" class="form-control" name="birthdate">
   </div>
 
-
-<!--STALL OPTION -->
   <div class="form-group">
-    <label for="LastName">Stall Section</label>
-                         <select name="CIVILSTATUS" id="CIVILSTATUS" class="form-control input-sm">
-                           <option selected disabled>Please Select Selection</option>
-                            <option>1 Fish & Foods</option>
-                            <option>2 Vegetables & Spices</option>
-                            <option>3 Dry Goods & Groceries</option>
-                            <option>4 Flowers, Fruits & Miscellaneous</option>
-                            <option>5 Meat, Dressed Chicken, Eggs, Grains, Dried Fish, Sakted Oridyctsm Cafeteruam Carenderia etc.</option>
-                         </select>
-                       </div>
-                     </div>
+    <label for="Birthdate">Contact Number</label>
+    <input type="number" class="form-control" name="contact_number">
+  </div>
 
   <!--STALL OPTION -->
 
@@ -97,7 +82,7 @@
                     </div>
                   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <input type="submit" name="submit" value="Submit" class="btn btn-primary">
 </form>
 <script>
   

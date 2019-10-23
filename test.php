@@ -25,6 +25,7 @@
 
 <div id="modalHomeEvents" class="modal fade" role="dialog">
     <div class="modal-dialog">
+
       <!-- Modal content-->
       <!-- Dri na ka mag butang ug Form para sa submit Button -->
       <div class="modal-content">
@@ -46,6 +47,8 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
+
+
 $(document).on("click", ".open-homeEvents", function () {
      var eventId = $(this).data('id');
      $('#idHolder').html( eventId );
@@ -57,3 +60,5 @@ $(document).ready(function() {
     $('#drivers').DataTable(1);
 } );
 </script>
+
+
