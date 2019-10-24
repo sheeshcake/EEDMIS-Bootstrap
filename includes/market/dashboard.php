@@ -14,11 +14,17 @@
     $sql = "SELECT * FROM market_payment INNER JOIN market_stalls ON market_payment.stall_id=market_stalls.stall_id";
     $result = mysqli_query($conn, $sql);
     while($data = mysqli_fetch_assoc($result)){
+        if(is_null($data['date_paid'])){
+            $s_id = $data['stall_id'];
+            $sql1 = "SELECT SUM(total_bill) as sum FROM market_payment WHERE stall_id='$s_id'";
+            $result1 = mysqli_query($conn, $sql1);
+            $val = mysqli_fetch_array($result1);
+                $total = $val['sum'];
 ?>
     <tr>
         <td><?php echo $data['date_billing']; ?></td>
         <td><?php echo $data['stall_name']; ?></td>
-        <td><?php echo $data['total_bill']; ?></td>
+        <td><?php if(is_null($data['date_paid']))echo $total; else echo "Paid"; ?></td>
         <td>
             <button class="colapse btn btn-primary" data-toggle="collapse" stall_id="<?php echo $data['stall_id']; ?>" tenant_id="<?php echo $data['tenant_id']; ?>" data-target="#tenant_details<?php echo $data['stall_id']; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
             View Tenant
@@ -31,6 +37,7 @@
         </td>
     </tr>
 <?php
+        }
     }
 ?>
 <div id="modal" class="modal fade" role="dialog">
@@ -38,7 +45,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="height:50px;">
-          <h4>Details</h4>
+          <h4>Payment</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body" id="payment_data">

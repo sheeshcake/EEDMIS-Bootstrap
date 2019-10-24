@@ -25,6 +25,7 @@
 			<td><p>Civil Status: <?php echo $row['civil_status']; ?></p></td>
 		</tr>
 	</table>
+		<a href="index.php?loc=view_records&id=<?php echo $id; ?>" class="btn btn-primary">View Records</a>
 </div>
 <div class="modal-body">
 	<label>Stalls</label>
