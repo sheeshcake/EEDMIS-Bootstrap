@@ -28,13 +28,15 @@
 </div>
 <div class="modal-body">
 	<label>Stalls</label>
-	<table class="table table-striped table-bordered">
-		<tr>
-			<th>Stall ID</th>
-			<th>Stall Department</th>
-			<th>Stall Name</th>
-			<th></th>
-		</tr>
+	<table class="table table-striped table-bordered" id="table">
+		<thead>
+			<tr>
+				<th>Stall ID</th>
+				<th>Stall Department</th>
+				<th>Stall Name</th>
+				<th></th>
+			</tr>
+		</thead>
 <?php
 	}
 	$sql = "SELECT * FROM market_stalls WHERE tenant_id = '$id'";
@@ -74,9 +76,11 @@
     </div>
   </div>
 </div>
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script>
 $(document).ready(function() {
+	$("#table").DataTable();
 	$(".btn").click(function() {
 	     var name = $(this).attr('id');
 	     $('#name').html(name);
