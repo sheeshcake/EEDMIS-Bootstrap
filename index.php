@@ -57,7 +57,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a type="button" class="btn btn-primary" href="controller/logout_controller.php">Logout</a>
+        <a class="btn btn-primary" href="controller/logout_controller.php">Logout</a>
       </div>
     </div>
   </div>

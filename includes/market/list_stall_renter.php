@@ -18,8 +18,6 @@
       <td><?php echo $data['address']; ?></td>
 			<td>
         <button class="view_info btn btn-primary" id="<?php echo $data['tenant_id'] ?>"  data-toggle="modal" data-target="#modal">View Details</button>
-        <button class="open-homeEvents btn btn-primary" data-id="<?php echo $data['tenant_id'] ?>"  data-toggle="modal" data-target="#modal">View Stalls</button>
-        <button class="open-homeEvents btn btn-primary" data-id="<?php echo $data['tenant_id'] ?>"  data-toggle="modal" data-target="#modal">Add Stalls</button>
       </td>
 		</tr>
 <?php
