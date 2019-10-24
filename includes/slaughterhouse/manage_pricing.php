@@ -1,61 +1,62 @@
-<h1>Sample table for testing i edit rani nako</h1>
 
-<table class="table table-striped table-bordered" id="drivers">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col">Name</th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
+<table class="table table-striped" id="table_data">
+  <thead>
+    <tr>
+      <th>Spieces Name</th>
+      <th>Price</th>
+      <th>Unit</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
 <?php
-	$sql = "SELECT * FROM ibjt_drivers";
-	$result = mysqli_query($conn, $sql);
-	while($data = mysqli_fetch_assoc($result)){
+  include "controller/connect.php";
+
+  $sql = "SELECT * FROM slaughterhouse_pricing";
+  $result = mysqli_query($conn, $sql);
+  while($data = mysqli_fetch_assoc($result)){
 ?>
-		<tr>
-			<td><?php echo $data['driver_id']; ?></td>
-			<td><?php echo $data['first_name'] . ' ' . $data['last_name']; ?></td>
-			<td><button class="open-homeEvents btn btn-primary" data-id="<?php echo $data['driver_id'] ?>"  data-toggle="modal" data-target="#modalHomeEvents">Schedule</button></td>
-		</tr>
+  <tr>
+    <td>
+        <div class="form-group">
+          <input type="text" class="form-control" id="s_name" aria-describedby="animal_type" placeholder="Species Name" value="<?php echo $data['animal_type']; ?>">
+          <small id="animal_type" class="form-text text-muted">E.g Cow, Chicken, etc.</small>
+        </div>
+    </td> 
+    <td>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">₱</span>
+        </div>
+        <input type="number" class="form-control" placeholder="Price" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $data['price']; ?>">
+      </div>
+    </td>
+    <td>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Unit</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected disabled>Choose...</option>
+          <option value="pcs">Pieces</option>
+          <option value="truck">Truck</option>
+        </select>
+      </div>
+    </td>
+    <td>
+      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
 <?php
-	}
+  }
+
 ?>
 </table>
-
-<div id="modalHomeEvents" class="modal fade" role="dialog">
-    <div class="modal-dialog">	
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header" style="height:50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <form method="post" action="controller/ibjt/schedule_controller.php">
-        <div class="modal-body">
-         <label>Scheduling</label>     
-        <input type="hidden" name="driver_id" id="eventId"/>
-        </div>
-        <input type="time" name="time" class="form-control">
-        <input type="date" name="date" class="form-control">
-        <div class="modal-footer">
-          <input type="submit" class="btn btn-primary" value="Submit" name="submit" style="background-color:rgb(0,30,66); ">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script>
-$(document).on("click", ".open-homeEvents", function () {
-     var eventId = $(this).data('id');
-     $('#idHolder').html( eventId );
-     $('#eventId').val(eventId);
-});	
 $(document).ready(function() {
-    $('#drivers').DataTable(1);
-} );
+  $("#table_data").DataTable();
+}); 
 </script>
