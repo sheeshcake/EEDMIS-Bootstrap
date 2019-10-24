@@ -45,7 +45,7 @@
 			<td><?php echo $row['stall_id']; ?></td>
 			<td><?php echo $row['stall_dept']; ?></td>
 			<td><?php echo $row['stall_name']; ?></td>
-			<td><button class="btn btn-danger">Remove</button></td>
+			<td><button data-toggle="modal" data-target="#exampleModal" id="<?php echo $row['stall_name']; ?>" class="btn btn-danger">Remove</button></td>
 		</tr>
 <?php
 	}
@@ -54,3 +54,32 @@
 ?>
 	</table>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remove?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to remove <p id="name"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">No</button>
+        <button type="button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+	$(".btn").click(function() {
+	     var name = $(this).attr('id');
+	     $('#name').html(name);
+     });
+});	
+</script>
