@@ -21,7 +21,9 @@
 			<td><?php echo $data['first_name'] . ' ' . $data['last_name']; ?></td>
 			<td><?php echo $data['sched_date']; ?></td>
 			<td><?php echo $data['sched_time']; ?></td>
-			<td><button class="btn btn-primary">Show Details</button></td>
+			<td>
+				<button data-toggle="modal" data-target="#details" class="show_details btn btn-primary" data="<?php echo $data['sched_id']; ?>" >Show Details</button>
+			</td>
 		</tr>
 	<?php
 			}
@@ -102,6 +104,24 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="details_data">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script>
@@ -112,6 +132,17 @@ $(document).ready(function() {
 		$("#units").show();
 		var unit = "By " + $('option:selected', this).attr('unit');
 		$('#unit').html(unit);
+	});
+	$(".show_details").click(function(){
+		var sched_id = $(this).attr('data');
+		$.ajax({
+                url: "controller/slaughterhouse/view_billing_details.php",
+                method:"POST",
+                data:{sched_id:sched_id},
+                success:function(data){
+                    $('#details_data').html(data);
+                }
+            });
 	});
 }); 
 </script>
