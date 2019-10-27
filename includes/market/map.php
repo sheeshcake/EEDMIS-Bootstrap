@@ -35,6 +35,7 @@
         display: block;
         padding: 2%;
     }
+
 </style>
 <center><h1>Tambo Market Map</h1></center>
 <div class="cont">
@@ -79,7 +80,6 @@
     </div><br>
 </div>
 
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -98,6 +98,7 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
