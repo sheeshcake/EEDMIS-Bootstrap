@@ -45,7 +45,7 @@
                 <div class="card" id="blue" style="background-color: blue;">
                     <button data="blue" data-target="#exampleModal" class="btn stretched-link">Blue Department</button>
                 </div>
-            </div><br>
+            </div><br>  
             <div style="border-style: dotted;">
                 <div class="card" id="green" style="background-color: green;" data-toggle="modal" data-target="#exampleModal">
                     <button data="green" data-target="#exampleModal" class="btn stretched-link">Green Department</button>
