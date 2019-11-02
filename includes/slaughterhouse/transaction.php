@@ -1,8 +1,13 @@
 <?php
 
+include "controller/medoo_connect.php";
+
 $data = $database->select('slaughterhouse_billing',
     [
+        // The row sched_id from table slaughterhouse_billing is equal the row sched_id from table slaughterhouse_schedule
         "[>]slaughterhouse_schedule" => ["sched_id"=>"sched_id"],
+
+        // The row customer_id from table slaughterhouse_billing is equal the row customer_id from table slaughterhouse_customer
         "[>]slaughterhouse_customer" => ["customer_id"=>"customer_id"],
     ],
     [
