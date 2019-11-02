@@ -9,6 +9,7 @@
 			while ($data = mysqli_fetch_assoc($result)) {
 				$_SESSION['role'] = $data['user_role'];
 				$_SESSION['name'] = $data['first_name'];
+				$_SESSION['id'] = $data['user_id'];
 			}
 			// echo $_SESSION['name'];
 			header("Location: ../index.php");

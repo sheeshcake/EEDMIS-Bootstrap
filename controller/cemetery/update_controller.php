@@ -4,7 +4,6 @@
 
 	if(isset($_POST['submit'])){
 		$pserson_id = $_POST['person_id'];
-
 		$first_name = $_POST['first_name'];
 		$middle_name = $_POST['middle_name'];
 		$last_name = $_POST['last_name'];
