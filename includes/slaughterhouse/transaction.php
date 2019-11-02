@@ -1,6 +1,7 @@
 <?php
 
 include "controller/medoo_connect.php";
+use Carbon\Carbon;
 
 $data = $database->select('slaughterhouse_billing',
     [
@@ -36,7 +37,7 @@ $data = $database->select('slaughterhouse_billing',
     <tr>
         <td><?php echo $d["billing_id"] ?></td>
         <td><?php echo $d["first_name"] . $d["last_name"] ?></td>
-        <td><?php echo $d["sched_date"] . $d["sched_time"] ?></td>
+        <td><?php echo Carbon::parse($d["sched_date"])->isoFormat('MMMM Do YYYY') . ", " . $d["sched_time"] ?></td>
         <td><?php echo $d["total_bill"] ?></td>
     </tr>
     <?php endforeach; ?>

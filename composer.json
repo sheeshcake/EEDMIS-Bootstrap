@@ -2,6 +2,7 @@
     "require": {
         "google/apiclient": "2.0",
         "components/jquery": "^3.3",
-        "catfan/medoo": "^1.7"
+        "catfan/medoo": "^1.7",
+        "nesbot/carbon": "^2.25"
     }
 }
