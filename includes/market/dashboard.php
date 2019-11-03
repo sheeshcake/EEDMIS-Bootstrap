@@ -16,7 +16,7 @@
     while($data = mysqli_fetch_assoc($result)){
         if(is_null($data['date_paid'])){
             $s_id = $data['stall_id'];
-            $sql1 = "SELECT SUM(total_bill) as sum FROM market_payment WHERE stall_id='$s_id'";
+            $sql1 = "SELECT SUM(total_bill-total_payment) as sum FROM market_payment WHERE stall_id='$s_id'";
             $result1 = mysqli_query($conn, $sql1);
             $val = mysqli_fetch_array($result1);
                 $total = $val['sum'];

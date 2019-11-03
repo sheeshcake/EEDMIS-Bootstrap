@@ -44,6 +44,9 @@
       else if($_GET['loc'] == 'test'){
         include "test.php";
       }
+      else if($_GET['loc'] == 'profile'){
+        include "includes/layout/view_profile.php";
+      }
       else{
         include "includes/layout/error-404.php";
       }

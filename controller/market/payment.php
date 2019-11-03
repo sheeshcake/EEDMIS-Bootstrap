@@ -12,6 +12,7 @@
 				<th>Stall Name</th>
 				<th>Total Bill</th>
 				<th>Status</th>
+				<th></th>
 			</tr>
 		</thead>
 	<?php
@@ -21,12 +22,12 @@
 	?>
 		<tr>
 			<input type="hidden" name="stall_id" value="<?php echo $data['stall_id']; ?>">
-			<input type="hidden" name="payment_id" value="<?php echo $data['payment_id']; ?>">
 			<td><?php echo $data['payment_id']; ?></td>
 			<td><?php echo $data['stall_id']; ?></td>
 			<td><?php echo $data['stall_name']; ?></td>
-			<td><?php echo $data['total_bill']; ?></td>
-			<td><?php if($data['total_bill'] == 0) echo "PAID"; if($data['total_bill'] < 0) echo "Advanced Payment"; if($data['total_bill'] > 0) echo "Unpaid"; ?></td>
+			<td><?php echo $data['total_bill']-$data['total_payment']; ?></td>
+			<td><?php if(($data['total_bill']-$data['total_payment']) == 0) echo "PAID"; else echo "Unpaid"; ?></td>
+			<td><input type="checkbox" name="payment_id" value="<?php echo $data['payment_id'];?>"></td>
 		</tr>
 	<?php
 		}

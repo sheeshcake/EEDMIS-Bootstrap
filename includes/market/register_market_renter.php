@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
 <div class="container" style="padding: 2%;">
   <div class="panel panel-default">
     <div class="panel-heading">Tenant Registration</div>

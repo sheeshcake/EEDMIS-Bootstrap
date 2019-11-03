@@ -10,7 +10,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"><?php echo $_SESSION['name']; ?></a>
       <div class="dropdown-menu" aria-labellledby="navbarDropdown">
-        <a class="dropdown-item" href="#">View Profile</a>
+        <a class="dropdown-item" href="index.php?loc=profile">View Profile</a>
         <button class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</button>
       </div>
     </li>
