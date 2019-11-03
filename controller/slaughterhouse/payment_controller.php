@@ -6,7 +6,7 @@ session_start();
 $amount = $_POST["amount"];
 $billing_id = $_POST["billing_id"];
 $created_at = date("Y/m/d");
-$change =floatval($_POST["amount"]) - floatval( $_POST["price"]);
+$change =floatval($_POST["amount"]) - floatval( $_POST["total_bill"]);
 
 $sql = "INSERT INTO slaughterhouse_payments(total_paid, total_change, billing_id, created_at) VALUES('$amount','$change','$billing_id', '$created_at')";
 if($result = mysqli_query($conn, $sql)){

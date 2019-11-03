@@ -55,7 +55,7 @@ $data = $database->select('slaughterhouse_billing',
             <?php if( $d['total_paid'] ): ?>
             <p>PAID</p>
             <?php else: ?>
-                <a href="javascript:;" onclick="createPayment(<?php echo $d["billing_id"]; ?>, <?php echo $d["price"]; ?>)">
+                <a href="javascript:;" onclick="createPayment(<?php echo $d["billing_id"]; ?>, <?php echo $d["total_bill"]; ?>)">
                     <button>Payment</button>
                 </a>
             <?php endif; ?>
@@ -65,7 +65,7 @@ $data = $database->select('slaughterhouse_billing',
 </table>
 
 <script>
-    function createPayment(billing_id, price)
+    function createPayment(billing_id, total_bill)
     {
         $.confirm({
             title: `Transaction #${billing_id}`,
@@ -75,7 +75,7 @@ $data = $database->select('slaughterhouse_billing',
                 '<label>Enter Total Amount To Pay</label>' +
                 '<input name="amount" type="number" placeholder="Amount" class="amount form-control" required />' +
                 '<input name="billing_id" type="hidden" value="'+billing_id+'"/>' +
-                '<input name="price" type="hidden" value="'+price+'"/>' +
+                '<input name="total_bill" type="hidden" value="'+total_bill+'"/>' +
                 '</div>' +
                 '</form>',
             buttons: {
