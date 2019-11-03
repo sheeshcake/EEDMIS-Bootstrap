@@ -18,6 +18,9 @@
 	$date = date("Y-m-d");
 	while($data = mysqli_fetch_assoc($result)){
 		if($data['sched_date'] == $date){
+      $sql1 = "SELECT * FROM slaughterhouse_billing INNER JOIN slaughterhouse_payments ON slaughterhouse_billing.billing_id=slaughterhouse_payments.billing_id WHERE sched_id=" . $data['sched_id'];
+      $result1 = mysqli_query($conn, $sql1);
+      while($data1 = mysqli_fetch_assoc($result1)){
 ?>
 <div class="d-flex p-2 bd-highlight">
 	<div class="card" style="width: 18rem;">
@@ -26,12 +29,22 @@
 	    <h5 class="card-title"><?php echo $data['first_name'] . " " . $data['last_name']; ?></h5>
 	    <p><strong>Time</strong><?php echo $data['sched_time']; ?></p>
 	    <center>
-	    	<button  id="<?php echo $data['sched_id']; ?>" data-toggle="modal" data-target="#customer_details" class="view_info btn btn-primary">View Details</button>
+        <?php if($data1['total_bill'] == $data1['total_paid']){ ?>
+	    	<h3>Paid</h3>
+        <?php 
+            }
+            else{
+        ?>
+        <button  id="<?php echo $data['sched_id']; ?>" data-toggle="modal" data-target="#customer_details" class="view_info btn btn-primary">View Details</button>
+        <?php
+          }
+        ?>
 	    </center>
 	  </div>
 	</div>
 </div>
 <?php
+      }
 		}
 	}	
 ?>
