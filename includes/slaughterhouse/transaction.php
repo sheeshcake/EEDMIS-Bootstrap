@@ -37,6 +37,7 @@ $data = $database->select('slaughterhouse_billing',
         <th>#</th>
         <th>Name</th>
         <th>Schedule</th>
+        <th>Pricing</th>
         <th>Total</th>
         <th>Change</th>
         <th>Action</th>
@@ -46,6 +47,7 @@ $data = $database->select('slaughterhouse_billing',
         <td><?php echo $d["billing_id"] ?></td>
         <td><?php echo $d["first_name"] . $d["last_name"] ?></td>
         <td><?php echo Carbon::parse($d["sched_date"])->isoFormat('MMMM Do YYYY') . ", " . $d["sched_time"] ?></td>
+        <td>Php <?php echo number_format($d["price"], 2) ?></td>
         <td>Php <?php echo number_format($d["total_bill"], 2) ?></td>
         <td><?php echo $d["total_change"] ?  'Php ' . number_format($d["total_change"], 2) :  'n/a' ?></td>
         <td>
