@@ -16,17 +16,38 @@
 	</center>
 	<br>
 	<br>
+        <form method="post" action="controller/admin/register_users_controller.php">
 	<div style="display: flex;">
 		<strong>Userame:</strong>
-		<input class="form-control" type="username" value="<?php echo $row['username']; ?>">
+		<input class="form-control" type="username" editable='false' value="<?php echo $row['username']; ?>">
 	</div>
 	<br>
 	<div style="display: flex;">
 		<strong>Password:</strong>
 		<input class="form-control" type="password" id="pass" value="<?php echo $row['password']; ?>">
 	</div>
+        </form>
+	<div style="margin-top: 10px;">
+		<center>
+			<button class="btn btn-primary" id="view">View Password</button>
+		</center>
+	</div>
 </div>
 <?php
 	}
 ?>
 </div>
+<script>
+	$(document).ready(function(){
+		$("#view").click(function(){
+			var pass = document.getElementById('pass');
+			if('password' == $("#pass").attr("type")){
+				$('#pass').get(0).type = 'text';
+			}
+			else{
+				$('#pass').get(0).type = 'password';
+			}
+
+		});
+	});
+</script>

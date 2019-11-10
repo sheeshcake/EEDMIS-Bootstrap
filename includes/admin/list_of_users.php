@@ -43,14 +43,13 @@
         <div class="modal-header" style="height:50px;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <form method="post" action="controller/admin/register_users_controller.php">
+
         <div class="modal-body" id="data">
         </div>
         <div class="modal-footer">
-          <input type="submit" class="btn btn-primary" value="Submit" name="submit" style="background-color:rgb(0,30,66); ">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
-        </form>
+
       </div>
 
     </div>
