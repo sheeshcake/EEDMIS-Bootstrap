@@ -33,7 +33,7 @@ $data = $database->select('slaughterhouse_billing',
 ?>
 
 
-<table style="width:100%" id="transactions">
+<table style="width:100%" id="transactions" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>#</th>
@@ -56,10 +56,10 @@ $data = $database->select('slaughterhouse_billing',
         <td><?php echo $d["total_change"] ?  'Php ' . number_format($d["total_change"], 2) :  'n/a' ?></td>
         <td>
             <?php if( $d['total_paid'] ): ?>
-            <p>PAID</p>
+            <p style="color: green;">PAID</p>
             <?php else: ?>
                 <a href="javascript:;" onclick="createPayment(<?php echo $d["billing_id"]; ?>, <?php echo $d["total_bill"]; ?>)">
-                    <button>Payment</button>
+                    <button class="btn btn-danger">Payment</button>
                 </a>
             <?php endif; ?>
         </td>

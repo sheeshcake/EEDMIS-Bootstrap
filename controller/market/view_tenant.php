@@ -25,7 +25,7 @@
 			<td><p>Civil Status: <?php echo $row['civil_status']; ?></p></td>
 		</tr>
 	</table>
-		<a href="index.php?loc=view_records&id=<?php echo $id; ?>" class="btn btn-primary">View Records</a>
+		<!-- <a href="index.php?loc=view_records&id=<?php #echo $id; ?>" class="btn btn-primary">View Records</a> -->
 </div>
 <div class="modal-body">
 	<label>Stalls</label>
@@ -48,7 +48,7 @@
 			<td><?php echo $row['stall_id']; ?></td>
 			<td><?php echo $row['stall_dept']; ?></td>
 			<td><?php echo $row['stall_name']; ?></td>
-			<td><button data-toggle="modal" data-target="#exampleModal" id="<?php echo $row['stall_name']; ?>" class="btn btn-danger">Remove</button></td>
+			<td><button data-toggle="modal" data-target="#exampleModal" id="rem" id_num="<?php echo $row['stall_id']; ?>" name="<?php echo $row['stall_name']; ?>" class="btn btn-danger">Remove</button></td>
 		</tr>
 <?php
 	}
@@ -68,11 +68,13 @@
         </button>
       </div>
       <div class="modal-body">
-        Are you sure to remove <p id="name"></p>
+        <p id="name">Are you sure to remove </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary">No</button>
-        <button type="button" class="btn btn-primary">Yes</button>
+        <form method="post" action="controller/market/remove_tenant_controller.php">
+        	<input type="hidden" name="id" id="rem_id">
+        	<input type="submit" name="submit" value="Yes" class="btn btn-primary">
+        </form>
       </div>
     </div>
   </div>
@@ -82,9 +84,12 @@
 <script>
 $(document).ready(function() {
 	$("#table").DataTable();
-	$(".btn").click(function() {
-	     var name = $(this).attr('id');
-	     $('#name').html(name);
+	$("#rem").click(function() {
+	     var id = $(this).attr('id_num');
+	     var name = $(this).attr('name');
+	     var text = $('#name').html() + name + "?";
+	     $('#name').html(text);
+	     $('#rem_id').val(id);
      });
 });	
 </script>

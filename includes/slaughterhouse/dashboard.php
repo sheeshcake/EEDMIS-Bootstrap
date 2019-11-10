@@ -1,12 +1,13 @@
 <?php
 	include "controller/connect.php";
-
+  use Carbon\Carbon;
 ?>
+<center><h2>Schedules Today</h2></center>
 <center>
 	<div class="col-3">
 		<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item active" aria-current="page"><strong>Date:</strong><?php echo date("Y-m-d"); ?></li>
+		    <li class="breadcrumb-item active" aria-current="page"><strong>Date:</strong><?php echo Carbon::parse(date("Y-m-d"))->isoFormat('MMMM Do YYYY') . "," . date('h:m:s'); ?></li>
 		  </ol>
 		</nav>
 	</div>
@@ -18,10 +19,7 @@
 	$date = date("Y-m-d");
 	while($data = mysqli_fetch_assoc($result)){
 		if($data['sched_date'] == $date){
-      $sql1 = "SELECT * FROM slaughterhouse_billing INNER JOIN slaughterhouse_payments ON slaughterhouse_billing.billing_id=slaughterhouse_payments.billing_id WHERE sched_id=" . $data['sched_id'];
-      $result1 = mysqli_query($conn, $sql1);
-      while($data1 = mysqli_fetch_assoc($result1)){
-?>
+      ?>
 <div class="d-flex p-2 bd-highlight">
 	<div class="card" style="width: 18rem;">
 	  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRWomCiEvIm64KCtM5g7k3Aq4s2iS_v0WdAy6L2fFt3-HU-rFhP" alt="Image">
@@ -29,7 +27,13 @@
 	    <h5 class="card-title"><?php echo $data['first_name'] . " " . $data['last_name']; ?></h5>
 	    <p><strong>Time</strong><?php echo $data['sched_time']; ?></p>
 	    <center>
-        <?php if($data1['total_bill'] == $data1['total_paid']){ ?>
+        <?php
+          $sql1 = "SELECT * FROM slaughterhouse_billing WHERE sched_id=" . $data['sched_id'];
+          $result1 = mysqli_query($conn, $sql1);
+          while($data1 = mysqli_fetch_assoc($result1)){
+            $sql2 = "SELECT * FROM slaughterhouse_payment WHERE billing_id=" . $data1['billing_id'];
+            if($result2 = mysqli_query($conn, $sql2)) {
+        ?>
 	    	<h3>Paid</h3>
         <?php 
             }

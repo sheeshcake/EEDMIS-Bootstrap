@@ -9,7 +9,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="index.php?loc=manage_customer">Manage Customers</a>
-          <a class="dropdown-item" href="index.php?loc=manage_schedules">Manage Scedules</a>
+          <a class="dropdown-item" href="index.php?loc=manage_schedules">Manage Schedules</a>
           <a class="dropdown-item" href="index.php?loc=manage_pricing">Manage Pricing</a>
+          <a class="dropdown-item" href="index.php?loc=reports">Reports</a>
         </div>
   </li>
